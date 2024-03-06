@@ -1,0 +1,22 @@
+<%- include('./partials/head') %>
+
+<main>
+    <ul>
+        <% houses.forEach(house => { %>
+        <li>
+            <div>
+                <img src="#" alt="huis-img">
+            </div>
+            <section>
+                <h2><%= house.street + house.house_nr %></h2>
+                <p><%= house.postal_code + house.city %></p>
+                <p><%= house.price %></p>
+                <p><%= house.m2 + "/" + house.m2_garden + "/" + house.rooms %></p>
+                <p><%= house.agent %></p>
+            </section>
+        </li>
+        <% }) %>
+    </ul>
+</main>
+
+<%- include('./partials/foot') %>
