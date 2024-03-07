@@ -1,0 +1,222 @@
+/* ================================================ */
+/* root */
+/* ================================================ */
+:root {
+    --white: #FFFFFF;
+    --web-orange: #F7A100;
+    --regent-blue: #E6F2F7;
+    --lochmara: #0071B3;
+    --mine-shaft: #333333;
+    --silver: #CCCCCC;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 100%;
+    min-height: 100%;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--mine-shaft);
+}
+
+hr {
+    color: var(--silver);
+    margin-bottom: 1em;
+}
+/* ================================================ */
+/* buttons */
+/* ================================================ */
+.btn-primary {
+    background-color: var(--lochmara);
+    color: var(--white);
+    outline: none;
+    border: none;
+    text-decoration: none;
+    padding: 1em;
+    display: inline-block;
+}
+
+.btn-secondary {
+    background-color: var(--web-orange);
+    color: var(--white);
+    outline: none;
+    border: none;
+    text-decoration: none;
+    padding: 1em;
+    display: inline-block;
+}
+/* ================================================ */
+/* navbar */
+/* ================================================ */
+nav {
+    background-color: var(--web-orange);
+
+    & ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        list-style-type: none;
+        padding: 1em;
+
+        & li {
+            color: var(--white);
+        }
+    }
+}
+/* ================================================ */
+/* main */
+/* ================================================ */
+main {
+    padding: 1em;
+}
+/* ================================================ */
+/* member-list */
+/* ================================================ */
+.member-section {
+    margin-bottom: 1em;
+
+    & .member-list {
+        background-color: var(--regent-blue);
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        list-style-type: none;
+        border-radius: 0.5em;
+        padding: 1em;
+        overflow-x: auto;
+
+        & .profile-container {
+            width: 4em;
+            height: 4em;
+            border-radius: 50%;
+            background-color: var(--lochmara);
+
+            & img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+
+        & p {
+            text-align: center;
+        }
+    }
+}
+/* ================================================ */
+/* search-bar */
+/* ================================================ */
+.search-bar {
+    width: 100%;
+    margin-bottom: 1em;
+
+    & input {
+        background-color: var(--white);
+        border: 0.1em solid var(--silver);
+        padding: 1em;
+        width: calc(75% - 1em);
+    }
+
+    & button {
+        width: calc(25% - 1em);
+    }
+}
+/* ================================================ */
+/* sort & add */
+/* ================================================ */
+.sort-add-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+
+    & select {
+        background-color: var(--white);
+        border: 0.1em solid var(--silver);
+        padding: 1em;
+        margin-right: 1em;
+        width: 50%;
+    }
+
+    & button {
+        width: 50%;
+    }
+}
+/* ================================================ */
+/* house-list */
+/* ================================================ */
+.house-section {
+    & .house-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        width: 100%;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: start;
+            width: 100%;
+            margin-bottom: 1em;
+
+            & .col:first-child {
+                width: 100%;
+            }
+            
+            & .col {
+                & img {
+                    width: 100%;
+                    height: 5em;
+                    background-color: var(--silver);
+                    border-top-left-radius: 0.5em;
+                    border-top-right-radius: 0.5em;
+                }
+
+                & .street {
+                    color: var(--lochmara);
+                }
+
+                & .price {
+                    font-weight: bold;
+                }
+
+                & .agent {
+                    color: var(--lochmara);
+                }
+
+                & .rating-list {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    list-style-type: none;
+                    margin-bottom: 1em;
+
+                    & li {
+                        color: var(--silver);
+                    }
+
+                    & .active {
+                        color: var(--web-orange);
+                    }
+                }
+            }
+        }
+    }
+}

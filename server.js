@@ -27,6 +27,7 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
     fetchJson(houses).then((apiData) => {
+      console.log(apiData)
     // request.params.id
     // fetchJson(housesImages).then((apiData2) => {
     //     apiData2.data.f_houses_id = apiData.data.id

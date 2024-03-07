@@ -1,22 +1,68 @@
 <%- include('./partials/head') %>
 
+<header>
+    <nav>
+        <ul>
+            <li><img src="/assets/fundawonen-logo.svg" alt="funda-logo"></li>
+            <li><i class="fa-solid fa-house"></i> Mijn huis</li>
+            <li><i class="fa-regular fa-circle-user"></i>Naam</li>
+        </ul>
+    </nav>
+</header>
 <main>
-    <ul>
-        <% houses.forEach(house => { %>
-        <li>
-            <div>
-                <img src="#" alt="huis-img">
-            </div>
-            <section>
-                <h2><%= house.street + house.house_nr %></h2>
-                <p><%= house.postal_code + house.city %></p>
-                <p><%= house.price %></p>
-                <p><%= house.m2 + "/" + house.m2_garden + "/" + house.rooms %></p>
-                <p><%= house.agent %></p>
-            </section>
-        </li>
-        <% }) %>
-    </ul>
+    <h1>Favoriete huizen</h1>
+    <section class="member-section">
+        <h3>Leden</h3>
+        <ul class="member-list">
+            <li>
+                <div class="profile-container">
+                    <img src="#" alt="profile-img">
+                </div>
+                <p>Naam</p>
+            </li>
+        </ul>
+    </section>
+
+    <div class="search-bar">
+        <input type="search" placeholder="zoek naar huis in lijst...">
+        <button class="btn-primary" type="button">Zoek</button>
+    </div>
+
+    <hr>
+
+    <div class="sort-add-section">
+        <select>
+            <option>sorteren</option>
+        </select>
+        <button class="btn-secondary" type="button">Voeg huis toe</button>
+    </div>
+
+    <div class="house-section">
+        <ul class="house-list">
+            <% houses.forEach(house => { %>
+            <li>
+                <div class="col">
+                    <img src="#" alt="huis-img">
+                </div>
+                <section class="col">
+                    <h2 class="street">Schans 15</h2>
+                    <p>1941 JP Beverwijk</p>
+                    <p class="price">€ 375.000 k.k.</p>
+                    <p>99 m² / 71 m²4 kamers</p>
+                    <p class="agent">Brantjes Makelaars Beverwijk</p>
+                    <ul class="rating-list">
+                        <li class="active"><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                    </ul>
+                    <a class="btn-secondary" href="#">Verwijder</a>
+                </section>
+            </li>
+            <% }); %>
+        </ul>
+    </div>
 </main>
 
 <%- include('./partials/foot') %>
