@@ -5,9 +5,10 @@ import express from 'express'
 import fetchJson from './helpers/fetch-json.js'
 
 // Haal data op uit de FDND API, ga pas verder als de data gedownload is
-const houses = await fetchJson('https://fdnd-agency.directus.app/items/f_houses')
-const favoriteList = await fetchJson('https://fdnd-agency.directus.app/items/f_list')
-const housesImages = await fetchJson('https://fdnd-agency.directus.app/items/f_houses_files')
+const apiUrl = 'https://fdnd-agency.directus.app/items/'
+const houses = await fetchJson(apiUrl + 'f_houses')
+const favoriteList = await fetchJson(apiUrl + 'f_list')
+const housesImages = await fetchJson(apiUrl + 'f_houses_files')
 
 // Maak een nieuwe express app aan
 const app = express()
