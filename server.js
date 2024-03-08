@@ -6,9 +6,9 @@ import fetchJson from './helpers/fetch-json.js'
 
 // Haal data op uit de FDND API, ga pas verder als de data gedownload is
 const apiUrl = 'https://fdnd-agency.directus.app/items/'
-const houses = await fetchJson(apiUrl + 'f_houses')
-const favoriteList = await fetchJson(apiUrl + 'f_list')
-const housesImages = await fetchJson(apiUrl + 'f_houses_files')
+const houses = apiUrl + 'f_houses'
+const favoriteList = apiUrl + 'f_list'
+const housesImages = apiUrl + 'f_houses_files'
 
 // Maak een nieuwe express app aan
 const app = express()
@@ -27,14 +27,10 @@ app.use(express.urlencoded({extended: true}))
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get('/', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-    fetchJson(houses).then((apiData) => {
-      console.log(apiData)
-    // request.params.id
-    // fetchJson(housesImages).then((apiData2) => {
-    //     apiData2.data.f_houses_id = apiData.data.id
-    // })
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd index
-    response.render('index', {houses: apiData.data})
+    fetchJson(favoriteList).then((listData) => {
+      fetchJson(favoriteList + '?fields=house_id.*').then((houseData) => {
+        response.render('index', {list: listData.data, houses: houseData.data})
+      })
     })
 })
 

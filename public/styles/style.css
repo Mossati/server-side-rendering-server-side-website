@@ -8,6 +8,8 @@
     --lochmara: #0071B3;
     --mine-shaft: #333333;
     --silver: #CCCCCC;
+    --orange-darker: #DE9000;
+    --bahama-blue: #006199;
 }
 
 *{
@@ -53,6 +55,14 @@ hr {
     text-decoration: none;
     padding: 1em;
     display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: var(--bahama-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--orange-darker);
 }
 /* ================================================ */
 /* navbar */
@@ -203,18 +213,16 @@ main {
             align-items: start;
             width: 100%;
             margin-bottom: 1em;
-
-            & .col:first-child {
-                width: 100%;
-            }
             
             & .col {
+                width: 100%;
                 & .image-container {
                     width: 100%;
                     height: 12em;
                     background-color: var(--silver);
                     border-top-left-radius: 0.5em;
                     border-top-right-radius: 0.5em;
+                    overflow: hidden;
                     position: relative;
 
                     & img {
@@ -235,7 +243,10 @@ main {
                 }
 
                 & .street {
-                    color: var(--lochmara);
+                    & a {
+                        color: var(--lochmara);
+                        text-decoration: none;
+                    }
                 }
 
                 & .price {
@@ -252,9 +263,11 @@ main {
                     justify-content: center;
                     align-items: center;
                     list-style-type: none;
+                    width: 10em;
 
                     & li {
                         color: var(--silver);
+                        margin-bottom: 0;
                     }
 
                     & .active {
