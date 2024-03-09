@@ -1,17 +1,22 @@
+<!-- head -->
 <%- include('./partials/head') %>
 
+<!-- navbar -->
 <%- include('./partials/navbar') %>
 
+<!-- main -->
 <main>
-    <h1>Favoriete huizen</h1>
+    <h1>Favorieten lijst</h1>
+    <h2 class="favorite-title"><%= lists.title %></h2>
+    <p class="favorite-description"><%= lists.description %></p>
     <section class="member-section">
-        <h3>Leden</h3>
+        <h3>Groeps leden</h3>
         <ul class="member-list">
             <li>
                 <div class="profile-container">
-                    <!-- <img src="#" alt="profile-img"> -->
+                    <img src="/assets/Mohammed.png" alt="profile-img">
                 </div>
-                <p>Naam</p>
+                <p>Mohammed</p>
             </li>
             <li><i class="fa-solid fa-plus"></i></li>
         </ul>
@@ -19,10 +24,8 @@
 
     <div class="search-bar">
         <input type="search" placeholder="zoek naar huis in lijst...">
-        <button class="btn-primary" type="button">Zoek</button>
+        <button type="button" class="btn-primary" type="button">Zoek</button>
     </div>
-
-    <hr>
 
     <div class="sort-add-section">
         <select>
@@ -54,28 +57,22 @@
                     </div>
                 </div>
                 <section class="col">
-                    <h2 class="street"><a href="#"><%= house.street %></a></h2>
+                    <div class="title-row">
+                        <h2 class="street"><a href="#"><%= house.street %></a></h2>
+                        <button type="button" class="btn-remove"></button>
+                    </div>
                     <p><%= house.postal_code + house.city %></p>
                     <p class="price">€ <%= house.price %> k.k.</p>
                     <p><%= house.m2 + "m² / " + house.m2_garden + "m² / " + house.rooms + " kamers" %></p>
-                    <p class="agent"><%= house.agent %></p>
+                    <p class="agent"><%= house.agent !== null && house.agent !== "" ? house.agent : "geen makelaar" %></p>
                     <ul class="rating-list">
-                        <li class="active"><i class="fa-solid fa-star"></i></li>
-                        <li class="active"><i class="fa-solid fa-star"></i></li>
-                        <li class="active"><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
+                        <li class="star active"></li>
+                        <li class="star active"></li>
+                        <li class="star active"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
                     </ul>
-                    <p>Toegevoegd aan favorieten:</p>
-                    <ul class="member-liked-list">
-                        <li>
-                            <div class="profile-container">
-                                <!-- <img src="#" alt="profile-img"> -->
-                            </div>
-                            <p>Naam</p>
-                        </li>
-                    </ul>
-                    <button class="btn-secondary">Verwijder</button>
+                    <button type="button" class="btn-secondary">Bekijk lijst van leden</button>
                 </section>
             </li>
             <%  }) %>

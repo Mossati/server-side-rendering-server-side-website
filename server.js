@@ -27,11 +27,18 @@ app.use(express.urlencoded({extended: true}))
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get('/', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-    fetchJson(favoriteList).then((listData) => {
-      fetchJson(favoriteList + '?fields=house_id.*').then((houseData) => {
-        response.render('index', {list: listData.data, houses: houseData.data})
-      })
+    fetchJson(houses).then((housesData) => {
+      response.render('index', {houses: housesData.data})
     })
+})
+
+app.get('/favorites', function (request, response) {
+  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
+  fetchJson(favoriteList).then((listsData) => {
+    fetchJson(favoriteList + '?fields=house_id.*').then((houseData) => {
+      response.render('favorites', {lists: listsData.data[0], houses: houseData.data[0].house_id})
+    })
+  })
 })
 
 // Maak een POST route voor de index
