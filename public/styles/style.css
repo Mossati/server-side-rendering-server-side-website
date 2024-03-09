@@ -207,6 +207,22 @@ main {
         width: 50%;
     }
 }
+
+.sort-section {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+
+    & select {
+        background-color: var(--white);
+        border: 0.1em solid var(--silver);
+        padding: 1em;
+        margin-right: 1em;
+        width: 50%;
+    }
+}
 /* ================================================ */
 /* house-list */
 /* ================================================ */

@@ -1,30 +1,19 @@
+<!-- head -->
 <%- include('./partials/head') %>
 
+<!-- navbar -->
 <%- include('./partials/navbar') %>
 
+<!-- main -->
 <main>
-    <h1>Favoriete huizen</h1>
-    <section class="member-section">
-        <h3>Leden</h3>
-        <ul class="member-list">
-            <li>
-                <div class="profile-container">
-                    <!-- <img src="#" alt="profile-img"> -->
-                </div>
-                <p>Naam</p>
-            </li>
-            <li><i class="fa-solid fa-plus"></i></li>
-        </ul>
-    </section>
+    <h1>Alle huizen</h1>
 
     <div class="search-bar">
         <input type="search" placeholder="zoek naar huis in lijst...">
-        <button class="btn-primary" type="button">Zoek</button>
+        <button type="button" class="btn-primary" type="button">Zoek</button>
     </div>
 
-    <hr>
-
-    <div class="sort-add-section">
+    <div class="sort-section">
         <select>
             <option disabled selected>Sorteren</option>
             <option>Bewaardatum</option>
@@ -40,7 +29,6 @@
             <option>Perceelopp.</option>
             <option>Kamers</option>
         </select>
-        <button class="btn-secondary" type="button"><i class="fa-solid fa-plus"></i> Voeg huis toe</button>
     </div>
 
     <div class="house-section">
@@ -54,28 +42,22 @@
                     </div>
                 </div>
                 <section class="col">
-                    <h2 class="street"><a href="#"><%= house.street %></a></h2>
+                    <div class="title-row">
+                        <h2 class="street"><a href="#"><%= house.street %></a></h2>
+                        <button type="button" class="btn-remove"></button>
+                    </div>
                     <p><%= house.postal_code + house.city %></p>
                     <p class="price">€ <%= house.price %> k.k.</p>
                     <p><%= house.m2 + "m² / " + house.m2_garden + "m² / " + house.rooms + " kamers" %></p>
-                    <p class="agent"><%= house.agent %></p>
+                    <p class="agent"><%= house.agent !== null && house.agent !== "" ? house.agent : "geen makelaar" %></p>
                     <ul class="rating-list">
-                        <li class="active"><i class="fa-solid fa-star"></i></li>
-                        <li class="active"><i class="fa-solid fa-star"></i></li>
-                        <li class="active"><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
+                        <li class="star active"></li>
+                        <li class="star active"></li>
+                        <li class="star active"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
                     </ul>
-                    <p>Toegevoegd aan favorieten:</p>
-                    <ul class="member-liked-list">
-                        <li>
-                            <div class="profile-container">
-                                <!-- <img src="#" alt="profile-img"> -->
-                            </div>
-                            <p>Naam</p>
-                        </li>
-                    </ul>
-                    <button class="btn-secondary">Verwijder</button>
+                    <button type="button" class="btn-secondary">Bewaren</button>
                 </section>
             </li>
             <%  }) %>
