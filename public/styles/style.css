@@ -367,6 +367,7 @@ main {
                     margin-bottom: 1em;
 
                     & .star {
+                        fill: var(--bahama-blue);
                         color: var(--silver);
                         margin-bottom: 0;
                         margin-right: 1em;
