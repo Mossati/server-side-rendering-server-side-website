@@ -69,11 +69,19 @@ body {
 .btn-secondary:hover {
     background-color: var(--orange-darker);
 }
+
+.btn-remove, .btn-nav-remove {
+    width: 2em;
+    height: 2em;
+    background: none;
+    outline: none;
+    border: none;
+}
 /* ================================================ */
 /* navbar */
 /* ================================================ */
 nav {
-    background-color: var(--web-orange);
+    position: relative;
 
     & .navbar-list {
         display: flex;
@@ -81,30 +89,85 @@ nav {
         justify-content: space-between;
         align-items: center;
         list-style-type: none;
-        padding: 1em;
+        background-color: var(--web-orange);
+        padding: 0.5em;
 
-        & li {
-            color: var(--white);
+        & .navbar-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            list-style-type: none;
+
+            & li {
+                margin-right: 1em;
 
             & img {
                 width: 5em;
                 height: auto;
             }
 
-            & .navbar-section {
+            & a, .btn-menu {
                 display: flex;
-                flex-direction: row;
-                justify-content: space-around;
+                flex-direction: column;
+                justify-content: center;
                 align-items: center;
-                list-style-type: none;
-
-                & li {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    margin-right: 1em;
+                text-decoration: none;
+                outline: none;
+                border: none;
+                background: none;
+                color: var(--white);
+                font-size: 1em;
                 }
+            }
+        }
+    }
+
+    & .toggled-navbar-list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+        width: 100%;
+        background-color: var(--white);
+        z-index: 9999;
+        transform: translateY(-100%);
+
+        & .toggled-nav-top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+            width: 100%;
+            color: var(--mine-shaft);
+
+            & button {
+                outline: none;
+                border: none;
+                background: none;
+            }
+        }
+
+        & .toggled-nav-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            width: 100%;
+            background-color: var(--white);
+
+            & li:first-child {
+                margin-top: 1em;
+            }
+
+            & li {
+                width: 100%;
+                padding: 1em 0;
             }
         }
     }
@@ -133,8 +196,8 @@ main {
         overflow-x: auto;
 
         & li:last-child {
-            color: var(--lochmara);
             width: 4em;
+            font-size: 0.5em;
             text-align: center;
         }
 
@@ -250,8 +313,6 @@ main {
                     width: 100%;
                     height: 12em;
                     background-color: var(--silver);
-                    border-top-left-radius: 0.5em;
-                    border-top-right-radius: 0.5em;
                     overflow: hidden;
                     position: relative;
 
@@ -265,9 +326,11 @@ main {
                         position: absolute;
                         top: 1em;
                         left: 1em;
+                        font-weight: bold;
+                        font-size: 0.8em;
                         background-color: var(--web-orange);
                         color: var(--white);
-                        padding: 0.5em;
+                        padding: 0.2em;
                         border-radius: 0.2em;
                     }
                 }
@@ -284,17 +347,6 @@ main {
                             color: var(--lochmara);
                             text-decoration: none;
                         }
-                    }
-
-                    & .btn-remove {
-                        width: 2em;
-                        height: 2em;
-                        background: none;
-                        outline: none;
-                        border: none;
-                        background-image: url('/assets/remove.svg');
-                        background-repeat: no-repeat;
-                        background-size: cover;
                     }
                 }
 
@@ -359,9 +411,68 @@ main {
                     }
                 }
 
-                & button {
+                & .btn-secondary {
                     width: 100%;
                     text-align: center;
+                }
+            }
+        }
+    }
+}
+/* ================================================ */
+/* keyframes */
+/* ================================================ */
+.navbar-slide-up {
+    animation-name: navSlideUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes navSlideUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.navbar-slide-down {
+    animation-name: navSlideDown;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes navSlideDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+/* ================================================ */
+/* media query */
+/* ================================================ */
+@media only screen and (min-width: 768px) {
+    main {
+        width: 50%;
+        transform: translateX(50%);
+    }
+
+    .house-section {
+        & .house-list {
+            & li {
+                flex-direction: row;
+
+                & .col {
+                    & .image-container {
+                        height: 10em;
+                    }
+                }
+
+                & .col:last-child {
+                    padding-left: 1em;
                 }
             }
         }

@@ -18,7 +18,7 @@
                 </div>
                 <p>Mohammed</p>
             </li>
-            <li><i class="fa-solid fa-plus"></i></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M36.5 22.5h-11v-11A1.5 1.5 0 0024 10a1.5 1.5 0 00-1.5 1.5v11h-11a1.5 1.5 0 000 3h11v11A1.5 1.5 0 0024 38a1.5 1.5 0 001.5-1.5v-11h11a1.5 1.5 0 000-3z" fill="#0071B3"></path></svg></li>
         </ul>
     </section>
 
@@ -59,7 +59,7 @@
                 <section class="col">
                     <div class="title-row">
                         <h2 class="street"><a href="#"><%= house.street %></a></h2>
-                        <button type="button" class="btn-remove"></button>
+                        <button type="button" class="btn-remove"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M26.12 24l10.61-10.61a1.5 1.5 0 000-2.12 1.5 1.5 0 00-2.12 0L24 21.88 13.39 11.27a1.5 1.5 0 10-2.12 2.12L21.88 24 11.27 34.61a1.5 1.5 0 102.12 2.12L24 26.12l10.61 10.61a1.5 1.5 0 002.12 0 1.5 1.5 0 000-2.12z" fill="#666666"></path></svg></button>
                     </div>
                     <p><%= house.postal_code + house.city %></p>
                     <p class="price">€ <%= house.price %> k.k.</p>
@@ -72,7 +72,6 @@
                         <li class="star"></li>
                         <li class="star"></li>
                     </ul>
-                    <button type="button" class="btn-secondary">Bekijk lijst van leden</button>
                 </section>
             </li>
             <%  }) %>
