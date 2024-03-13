@@ -41,6 +41,13 @@ app.get('/favorites', function (request, response) {
   })
 })
 
+app.get('/house/:id', function (request, response) {
+  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
+  fetchJson(houses + "/" + request.params.id).then((houseData) => {
+    response.render('house', {house: houseData.data})
+  })
+})
+
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
   // Er is nog geen afhandeling van POST, redirect naar GET op /
