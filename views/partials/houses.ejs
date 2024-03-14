@@ -1,0 +1,25 @@
+<li>
+    <div class="col">
+        <div class="image-container">
+            <p class="new-badge">Nieuw</p>
+            <img src="https://fdnd-agency.directus.app/assets/<%= house.poster_image %>" alt="huis-img">
+        </div>
+    </div>
+    <section class="col">
+        <div class="title-row">
+            <h2 class="street"><a href="/house/<%= house.id %>"><%= house.street %></a></h2>
+            <button type="button" class="btn-remove"><img src="/assets/remove.svg" alt="remove-icon"></button>
+        </div>
+        <p><%= house.postal_code + house.city %></p>
+        <p class="price">€ <%= house.price %> k.k.</p>
+        <p><%= house.m2 + "m² / " + house.m2_garden + "m² / " + house.rooms + " kamers" %></p>
+        <p class="agent"><%= house.agent !== null && house.agent !== "" ? house.agent : "geen makelaar" %></p>
+        <ul class="rating-list">
+            <li class="star active"></li>
+            <li class="star active"></li>
+            <li class="star active"></li>
+            <li class="star"></li>
+            <li class="star"></li>
+        </ul>
+    </section>
+</li>

@@ -24,26 +24,31 @@ app.use(express.static('public'))
 //Verwerken van url-gecodeerde data in POST-verzoeken
 app.use(express.urlencoded({extended: true}))
 
-// Maak een GET route voor een detailpagina met een request parameter id
+// GET route voor de index pagina
 app.get('/', function (request, response) {
-    // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
     fetchJson(houses).then((housesData) => {
       response.render('index', {houses: housesData.data})
     })
 })
 
+// GET route voor de favorites pagina
 app.get('/favorites', function (request, response) {
-  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(favoriteList).then((listsData) => {
-    fetchJson(favoriteList + '?fields=house_id.*').then((houseData) => {
-      response.render('favorites', {lists: listsData.data[0], houses: houseData.data[0].house_id})
-    })
+    response.render('favorites', {lists: listsData.data})
   })
 })
 
+// GET route voor de favorite pagina
+app.get('/favorite/:id', function (request, response) {
+  fetchJson(favoriteList + "/" + request.params.id + '?fields=*.*.*').then((listData) => {
+    console.log(listData.data.houses)
+    response.render('favorite', {list: listData.data, houses: listData.data.houses})
+  })
+})
+
+// GET route voor de house pagina
 app.get('/house/:id', function (request, response) {
-  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-  fetchJson(houses + "/" + request.params.id).then((houseData) => {
+  fetchJson(houses + "/" + request.params.id + '?fields=*.*').then((houseData) => {
     response.render('house', {house: houseData.data})
   })
 })

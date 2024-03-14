@@ -40,6 +40,11 @@ body {
     margin-bottom: 1em;
 }
 
+.house-street {
+    color: var(--lochmara);
+    text-decoration: none;
+}
+
 h1 {
     font-size: 1.4em;
 }
@@ -93,6 +98,7 @@ h3 {
 /* navbar */
 /* ================================================ */
 nav {
+    background-color: var(--web-orange);
     position: relative;
 
     & .navbar-list {
@@ -101,8 +107,6 @@ nav {
         justify-content: space-between;
         align-items: center;
         list-style-type: none;
-        background-color: var(--web-orange);
-        padding: 0.5em;
 
         & .navbar-section {
             display: flex;
@@ -110,27 +114,44 @@ nav {
             justify-content: space-around;
             align-items: center;
             list-style-type: none;
+            height: 3.75em;
 
             & li {
                 margin-right: 1em;
 
-            & img {
-                width: 5em;
-                height: auto;
+                & a, .btn-menu {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    outline: none;
+                    border: none;
+                    background: none;
+                    color: var(--white);
+                    font-size: 1em;
+                    padding: 0.5em;
+
+                    & .funda-logo {
+                        width: 6em;
+                        height: auto;
+                        object-fit: cover;
+                    }
+                }
             }
 
-            & a, .btn-menu {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-decoration: none;
-                outline: none;
-                border: none;
+            & li:last-child {
+                margin-right: 0;
+            }
+
+            & li:hover {
+                background-color: var(--orange-darker);
+            }
+        }
+
+        & .navbar-section:first-child {
+            & li:nth-child(2):hover {
                 background: none;
-                color: var(--white);
-                font-size: 1em;
-                }
             }
         }
     }
@@ -441,13 +462,24 @@ nav {
 /* house-grid */
 /* ================================================ */
 .image-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
-    overflow: hidden;
+    list-style-type: none;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
 
-    & img {
+    & li {
+        flex: 0 0 auto;
         width: 100%;
-        height: auto;
-        object-fit: cover;
+        scroll-snap-align: start;
+
+        & img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
     }
 }
 
@@ -466,7 +498,7 @@ nav {
         padding: 0.5em;
         text-wrap: nowrap;
 
-        & svg {
+        & img {
             width: 1em;
             height: 1em;
         }
@@ -487,6 +519,27 @@ nav {
 
 .house-title {
     margin-top: 1em;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+
+    & .col:first-child {
+        width: 80%;
+    }
+
+    & .col:last-child {
+        width: 20%;
+
+        & img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
 }
 /* ================================================ */
 /* keyframes */
@@ -524,9 +577,38 @@ nav {
 /* media query */
 /* ================================================ */
 @media only screen and (min-width: 768px) {
-    main {
+    .main-padding {
         width: 50%;
         transform: translateX(50%);
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .navbar-list {
+            width: 50%;
+
+            & .navbar-section {
+                & li {
+                    & a {
+                        flex-direction: row;
+                    }
+
+                    & .btn-menu {
+                        display: none;
+                    }
+                }
+            }
+
+            & .navbar-section:first-child {
+                & li:first-child {
+                    margin-right: 0;
+                }
+            }
+        }
     }
 
     .house-section {
@@ -544,6 +626,33 @@ nav {
                     padding-left: 1em;
                 }
             }
+        }
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0.3em;
+        overflow-x: hidden;
+
+        & li {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        & li:first-child {
+            grid-column: 1 / 2;
+            grid-row: span 2;
         }
     }
 }
